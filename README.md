@@ -1,2 +1,254 @@
-# DSCI521_Course_Project
-DSCI521_Course_Project
+### DSCI521 Course Project
+
+# Data Analysis and Interpretation
+
+_This project is intended to provide some open-ended experience with exploring datasets for possible associations, relationships, and predictive capacities. This will then be followed up with the execution more complex and intensive analysis that prototypes the function of a potential application or underpin an empirical finding. Specifically, all projects for this course will entail the following two phases:_
+
+1. _A topically-motivated exploration of available pre-processed datasets and providing EDA  (exploratory data analyses)._
+2. _Interpreting the outcome of phase (1), the selection and execution of a more in depth analytics project, prototyping an application's function or empirical investigation._
+---
+
+### Our Team:
+- Harsh Bolakani hvb36@drexel.edu
+- Greg Morgan gm655@drexel.edu
+- Trevor Pawlewicz tmp365@drexel.edu
+---
+
+## Our Topic: _School Grade Analysis_
+>
+> ### We will explore the area of the activities of a students of a secondary school and what attributes contribute or detract from getting good grades. Concentrating on analyzing the alcohol correlation.
+>
+> _Attributes in our datasets are taken from a Math course and Portuguese language course in the country of Portugal._
+>
+> #### We will be asking the questions in our data analysis exporation:
+> - Are there any what contributing factors to a good grade?
+> - Are there any what contributing factors to a low grade?
+> - Does alcholhol play a part in either?
+> - Are any other factors found to determine a higher/lower grade?
+>
+> #### Analytic tools and data-medium we will be working with:
+> - CSV
+>
+> #### During our Exploratory Data Analysis journey we will also try to address the following points:
+> - who might be interested in our analysis and why
+>
+> #### We will also give insight into the following journey during our analysis:
+> - Context of Data found/used
+> - Data preprocessing if needed
+> - Our Exploratory Data Analysis
+> - Our Results
+> - Conclusion on our analysis
+---
+## Our Phase 1 Report:
+>
+> #### 1. Background report on the team's members, their self-identified skills, and individual contributions (Areas of expertise):
+> - **Harsh:** Java, Backend-Development, API-Development, Test Automation, API, Library Design
+> - **Greg:** Strengths: Python, AWS Cloud Based Architectures, REST API development, Data Streaming Technologies
+> - **Trev:** Front-end UI, Evidence-based User Experience, Design Thinking, Team Leadership
+>
+>
+> #### 2. Provide a discussion of what you would like to your analysis to do, who and what it will support by answering the following questions:
+>   - try to predict students final grade.
+>   - Are there any what contributing factors to a good grade?
+>   - Are there any what contributing factors to a low grade?
+>   - Does alcholhol play a part in either?
+>   - Are any other factors found to determine a higher/lower grade?
+>
+>
+> #### 3. Provide an exhibition of analyses from dataset(s) explored, including visual analyses, captions, and useful descripitions
+> ##### _Attrributes analized:_
+>   - school - student's school (binary: 'GP' - Gabriel Pereira or 'MS' - Mousinho da Silveira)
+>   - sex - student's sex (binary: 'F' - female or 'M' - male)
+>   - age - student's age (numeric: from 15 to 22)
+>   - address - student's home address type (binary: 'U' - urban or 'R' - rural)
+>   - famsize - family size (binary: 'LE3' - less or equal to 3 or 'GT3' - greater than 3)
+>   - Pstatus - parent's cohabitation status (binary: 'T' - living together or 'A' - apart)
+>   - Medu - mother's education (numeric: 0 - none, 1 - primary education (4th grade), 2 – 5th to 9th grade, 3 – secondary education or 4 – higher education)
+>   - Fedu - father's education (numeric: 0 - none, 1 - primary education (4th grade), 2 – 5th to 9th grade, 3 – secondary education or 4 – higher education)
+>   - Mjob - mother's job (nominal: 'teacher', 'health' care related, civil 'services' (e.g. administrative or police), 'at_home' or 'other')
+>   - Fjob - father's job (nominal: 'teacher', 'health' care related, civil 'services' (e.g. administrative or police), 'at_home' or 'other')
+>   - reason - reason to choose this school (nominal: close to 'home', school 'reputation', 'course' preference or 'other')
+>   - guardian - student's guardian (nominal: 'mother', 'father' or 'other')
+>   - traveltime - home to school travel time (numeric: 1 - <15 min., 2 - 15 to 30 min., 3 - 30 min. to 1 hour, or 4 - >1 hour)
+>   - studytime - weekly study time (numeric: 1 - <2 hours, 2 - 2 to 5 hours, 3 - 5 to 10 hours, or 4 - >10 hours)
+>   - failures - number of past class failures (numeric: n if 1<=n<3, else 4)
+>   - schoolsup - extra educational support (binary: yes or no)
+>   - famsup - family educational support (binary: yes or no)
+>   - paid - extra paid classes within the course subject (Math or Portuguese) (binary: yes or no)
+>   - activities - extra-curricular activities (binary: yes or no)
+>   - nursery - attended nursery school (binary: yes or no)
+>   - higher - wants to take higher education (binary: yes or no)
+>   - internet - Internet access at home (binary: yes or no)
+>   - romantic - with a romantic relationship (binary: yes or no)
+>   - famrel - quality of family relationships (numeric: from 1 - very bad to 5 - excellent)
+>   - freetime - free time after school (numeric: from 1 - very low to 5 - very high)
+>   - goout - going out with friends (numeric: from 1 - very low to 5 - very high)
+>   - Dalc - workday alcohol consumption (numeric: from 1 - very low to 5 - very high)
+>   - Walc - weekend alcohol consumption (numeric: from 1 - very low to 5 - very high)
+>   - health - current health status (numeric: from 1 - very bad to 5 - very good)
+>   - absences - number of school absences (numeric: from 0 to 93)
+>
+>
+> #### 4. Provide a discussion of who might be interested in your analysis:
+>   - Parents
+>   - School officials with legitimate educational interest;
+>   - Other schools to which a student is transferring;
+>   - Specified officials for audit or evaluation purposes;
+>   - Appropriate parties in connection with financial aid to a student;
+>   - Organizations conducting certain studies for or on behalf of the school;
+>   - Accrediting organizations;
+>   - To comply with a judicial order or lawfully issued subpoena;
+>   - Appropriate officials in cases of health and safety emergencies; and
+>   - State and local authorities, within a juvenile justice system, pursuant to specific State law.
+>
+>
+> #### 5. Provide a discussion of how your analysis might fit into an application or investigation:
+>   - How does Portuguel align with United States government statistics: by age 15, nearly 30% of kids have had at least one drink, and by age 18, that figure leaps to almost 60%?
+>   - Formulate possible Reasons why teens drink include.
+>
+>
+> #### 6. Provide a discussion of how your analysis is limited and could be improved
+>   - Dataset is limited to the Country of Portuguel of seconday students: drinking age (18) is much lower than United States.
+>       - The legal drinking age in Portugal is 18 years. Initially, the legal age was 17 years, but it has been raised to 18 since the rise of illegal sales and bad alcoholism influence among young kids. However, in most cases, there is an exception for minors aged 16 and 17 to consume a glass of beer, wine, or cider with a meal in a restaurant if they are with their family.
+>
+>
+> #### 7. Provide a selection of data for continued analysis, including justification
+>   - we could expand apon the test subjects and include higher grade levels
+>   - we could expand apon the class subjects that are analized
+>   - conduct a survey for data anaysis in the United States
+>
+>
+> #### 8. Provide a discussion of how your analysis might be completed and disseminated, i.e., who's the target audience?
+>   - this could be public record for Public Service Announcements.
+>   - Could also be used to help parents understand the effects of underage drrinking and how it is applied to academic progress.
+---
+
+## Part A: Exploratory Data Analysis
+
+> In this section, we will be doing EDA on the data set chosen for our project (https://www.kaggle.com/datasets/uciml/student-alcohol-consumption).
+>
+> ![kaggle logo](images/kaggle-logo-transparent-300.png "Kaggle")
+>
+> This data set includes student data (personal, family etc) and the corresponding grade that they received in Math and Portuguese. Our Goal in this section is to determine factors that contribute to a good grade and find correlation of various factors with student grades.
+
+
+__A1.__ Load the csv data into a pandas data frame.
+
+```python
+import pandas as pd
+
+def load_data(path_to_salaries_csv):
+
+    df = pd.read_csv(path_to_salaries_csv, sep = ",", header =0)
+
+    return df
+  ```
+
+__A1 (Data Summary):__. Let us look at some high level information abut the data. Data information, Total rows, Total number of Girls and Boys etc.
+
+```python
+print(student_data.info())
+print(student_data["sex"].value_counts())
+print("Total Counts: ", student_data["G3"].count())
+```
+
+__A2__. We will now try to visualize the Total grades of students using a histogram so we can find the variation and centrality of grades. We can also get basaic statistics about the final grades.
+
+```Python
+from matplotlib import pyplot as plt
+
+hist_fig = plt.figure(figsize = (6,6))
+
+_ = plt.hist(student_data["G3"])
+
+plt.tick_params(labelsize = 15)
+
+_ = plt.title("Student Grades Distribution", fontsize = 15)
+_ = plt.xlabel("Student Grades", fontsize = 15)
+_ = plt.ylabel("Total Students", fontsize = 15)
+
+print("Grades Meta-data", student_data["G3"].describe())
+```
+
+__A3__. Next we can try to analyze if this same trend is observed with Girls and Boys seperately. For this we will filter the student_data data set based on sex column and plot this curve separately
+
+```python
+girls_data = student_data[student_data["sex"] == "F"]
+boys_data = student_data[student_data["sex"] == "M"]
+
+fig = plt.figure(figsize = (8,8))
+
+# girls plot
+ax = fig.add_subplot(2,1,1)
+_ = plt.hist(girls_data["G3"])
+_ = plt.title("Girls Grades Distribution", fontsize = 15)
+
+# boys plot
+ax = fig.add_subplot(2,1,2)
+_ = plt.hist(boys_data["G3"])
+_ = plt.title("Boys Grades Distribution", fontsize = 15)
+```
+
+__A3 (Summary):__ From the above comparison, it seems thata there are not big differences in the variations of grades in the case of boys and girls. So we will turn our attention to other parameters.
+
+__A4__. We will now try to find relationship between Father and Mother's education to the final grade, G3 score. According to the documentation of the data we have the columns `Medu` and `Fedu` that correspond to Mother's and Father's education levels:
+
+> `Medu` - mother's education (numeric: 0 - none, 1 - primary education (4th grade), 2 – 5th to 9th grade, 3 – secondary education or 4 – higher education)
+
+> `Fedu` - father's education (numeric: 0 - none, 1 - primary education (4th grade), 2 – 5th to 9th grade, 3 – secondary education or 4 – higher education)
+
+We can use a scatter plot to visualize the relationship between mother's education and final grades of the students
+
+```python
+fig = plt.figure(figsize=(10,6))
+
+ax = fig.add_subplot(1,2,1)
+#_ = plt.scatter(student_data["G3"],student_data["Medu"], color = "black", s = 5, alpha = 0.5)
+_ = plt.hexbin(student_data["G3"],student_data["Medu"], color = "black", gridsize = 25)
+
+plt.tick_params(labelsize = 15)
+
+_ = plt.title("Grades Vs Mother's Education", fontsize = 15)
+
+_ = plt.xlabel("Student Grades", fontsize = 15)
+_ = plt.ylabel("Mother's Education", fontsize = 15)
+
+ax = fig.add_subplot(1,2,2)
+_ = plt.hexbin(student_data["G3"],student_data["Medu"], color = "black", gridsize = 25)
+
+plt.tick_params(labelsize = 15)
+
+_ = plt.title("Grades Vs Father's Education", fontsize = 15)
+
+_ = plt.xlabel("Student Grades", fontsize = 15)
+_ = plt.ylabel("Father's Education", fontsize = 15)
+
+plt.tight_layout()
+```
+
+__A4.1__ It does seem like there is a positive correlation between the Mother's and Father's education with the students final grade. We can use a correlation paramter to confirm this hypothesis. In this section we will calculaate the spearman correlation between the Father's and Mother's education to verify this.
+
+```python
+import scipy.stats
+
+print("Correlation of Grades with Mother's education", round(scipy.stats.spearmanr(student_data["Medu"], student_data["G3"])[0],2))
+print("Correlation of Grades with Father's education", round(scipy.stats.spearmanr(student_data["Fedu"], student_data["G3"])[0],2))
+```
+__A4 (Summary):__. It seems there is a better correlation with Mother's educetionwith student's gradaes and as seen in the visualization, the students that have the highest grades have their mother completed Higher education.
+
+__A5__. Now let us compute the spearman correlation of all other numeric data with grades and find out if we have a feature that is highly correlataed with the student's Grades
+
+```python
+list_features = [ column for column in list(student_data.columns) if student_data[column].dtype == "int64" ]
+print(list_features)
+```
+Let's apply the functions you have created to (1) total up the male and female population counts and (2) identify the states with the minimum and maximum totals and their total amounts.
+
+
+```python
+
+```
+
+
+---
+![Drexel logo](images/Drexel-engineering-blue-black.png "Drexel Engineering")
