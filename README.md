@@ -141,7 +141,7 @@ def load_data(path_to_salaries_csv):
     return df
   ```
 
-__A1(Data Summary)__. Let us look at some high level information abut the data. Data information, Total rows, Total number of Girls and Boys etc.
+__A1 (Data Summary):__. Let us look at some high level information abut the data. Data information, Total rows, Total number of Girls and Boys etc.
 
 ```python
 print(student_data.info())
@@ -186,12 +186,13 @@ _ = plt.hist(boys_data["G3"])
 _ = plt.title("Boys Grades Distribution", fontsize = 15)
 ```
 
-__A3 (Summary).__ From the above comparison, it seems thata there are not big differences in the variations of grades in the case of boys and girls. So we will turn our attention to other parameters.
+__A3 (Summary):__ From the above comparison, it seems thata there are not big differences in the variations of grades in the case of boys and girls. So we will turn our attention to other parameters.
 
-__A4__. We will now try to find relationship between Father and Mother's education to the final grade, G3 score. According to the documentation of the data we have the columns Medu and Fedu that correspond to Mother's and Father's education levels
+__A4__. We will now try to find relationship between Father and Mother's education to the final grade, G3 score. According to the documentation of the data we have the columns `Medu` and `Fedu` that correspond to Mother's and Father's education levels:
 
-Medu - mother's education (numeric: 0 - none, 1 - primary education (4th grade), 2 – 5th to 9th grade, 3 – secondary education or 4 – higher education)
-Fedu - father's education (numeric: 0 - none, 1 - primary education (4th grade), 2 – 5th to 9th grade, 3 – secondary education or 4 – higher education)
+> `Medu` - mother's education (numeric: 0 - none, 1 - primary education (4th grade), 2 – 5th to 9th grade, 3 – secondary education or 4 – higher education)
+
+> `Fedu` - father's education (numeric: 0 - none, 1 - primary education (4th grade), 2 – 5th to 9th grade, 3 – secondary education or 4 – higher education)
 
 We can use a scatter plot to visualize the relationship between mother's education and final grades of the students
 
@@ -222,60 +223,29 @@ _ = plt.ylabel("Father's Education", fontsize = 15)
 plt.tight_layout()
 ```
 
+__A4.1__ It does seem like there is a positive correlation between the Mother's and Father's education with the students final grade. We can use a correlation paramter to confirm this hypothesis. In this section we will calculaate the spearman correlation between the Father's and Mother's education to verify this.
 
 ```python
+import scipy.stats
 
+print("Correlation of Grades with Mother's education", round(scipy.stats.spearmanr(student_data["Medu"], student_data["G3"])[0],2))
+print("Correlation of Grades with Father's education", round(scipy.stats.spearmanr(student_data["Fedu"], student_data["G3"])[0],2))
 ```
+__A4 (Summary):__. It seems there is a better correlation with Mother's educetionwith student's gradaes and as seen in the visualization, the students that have the highest grades have their mother completed Higher education.
 
+__A5__. Now let us compute the spearman correlation of all other numeric data with grades and find out if we have a feature that is highly correlataed with the student's Grades
 
 ```python
-
+list_features = [ column for column in list(student_data.columns) if student_data[column].dtype == "int64" ]
+print(list_features)
 ```
-
-
-```python
-
-```
-
-
-```python
-
-```
-
-
-```python
-
-```
+Let's apply the functions you have created to (1) total up the male and female population counts and (2) identify the states with the minimum and maximum totals and their total amounts.
 
 
 ```python
 
 ```
 
-
-```python
-
-```
-
-
-```python
-
-```
-
-
-```python
-
-```
-
-
-```python
-
-```
-
-
-```python
-
-```
 
 ---
 ![Drexel logo](images/Drexel-engineering-blue-black.png "Drexel Engineering")
