@@ -123,4 +123,159 @@ _This project is intended to provide some open-ended experience with exploring d
 >   - Could also be used to help parents understand the effects of underage drrinking and how it is applied to academic progress.
 ---
 
+## Part A: Exploratory Data Analysis
+
+> In this section, we will be doing EDA on the data set chosen for our project (https://www.kaggle.com/datasets/uciml/student-alcohol-consumption)
+> This data set includes student data (personal, family etc) and the corresponding grade that they received in Math and Portuguese. Our Goal in this section is to determine factors that contribute to a good grade and find correlation of various factors with student grades.
+
+
+__A1.__ Load the csv data into a pandas data frame.
+
+```python
+import pandas as pd
+
+def load_data(path_to_salaries_csv):
+
+    df = pd.read_csv(path_to_salaries_csv, sep = ",", header =0)
+
+    return df
+  ```
+
+__A1(Data Summary)__. Let us look at some high level information abut the data. Data information, Total rows, Total number of Girls and Boys etc.
+
+```python
+print(student_data.info())
+print(student_data["sex"].value_counts())
+print("Total Counts: ", student_data["G3"].count())
+```
+
+__A2__. We will now try to visualize the Total grades of students using a histogram so we can find the variation and centrality of grades. We can also get basaic statistics about the final grades.
+
+```Python
+from matplotlib import pyplot as plt
+
+hist_fig = plt.figure(figsize = (6,6))
+
+_ = plt.hist(student_data["G3"])
+
+plt.tick_params(labelsize = 15)
+
+_ = plt.title("Student Grades Distribution", fontsize = 15)
+_ = plt.xlabel("Student Grades", fontsize = 15)
+_ = plt.ylabel("Total Students", fontsize = 15)
+
+print("Grades Meta-data", student_data["G3"].describe())
+```
+
+__A3__. Next we can try to analyze if this same trend is observed with Girls and Boys seperately. For this we will filter the student_data data set based on sex column and plot this curve separately
+
+```python
+girls_data = student_data[student_data["sex"] == "F"]
+boys_data = student_data[student_data["sex"] == "M"]
+
+fig = plt.figure(figsize = (8,8))
+
+# girls plot
+ax = fig.add_subplot(2,1,1)
+_ = plt.hist(girls_data["G3"])
+_ = plt.title("Girls Grades Distribution", fontsize = 15)
+
+# boys plot
+ax = fig.add_subplot(2,1,2)
+_ = plt.hist(boys_data["G3"])
+_ = plt.title("Boys Grades Distribution", fontsize = 15)
+```
+
+__A3 (Summary).__ From the above comparison, it seems thata there are not big differences in the variations of grades in the case of boys and girls. So we will turn our attention to other parameters.
+
+__A4__. We will now try to find relationship between Father and Mother's education to the final grade, G3 score. According to the documentation of the data we have the columns Medu and Fedu that correspond to Mother's and Father's education levels
+
+Medu - mother's education (numeric: 0 - none, 1 - primary education (4th grade), 2 – 5th to 9th grade, 3 – secondary education or 4 – higher education)
+Fedu - father's education (numeric: 0 - none, 1 - primary education (4th grade), 2 – 5th to 9th grade, 3 – secondary education or 4 – higher education)
+
+We can use a scatter plot to visualize the relationship between mother's education and final grades of the students
+
+```python
+fig = plt.figure(figsize=(10,6))
+
+ax = fig.add_subplot(1,2,1)
+#_ = plt.scatter(student_data["G3"],student_data["Medu"], color = "black", s = 5, alpha = 0.5)
+_ = plt.hexbin(student_data["G3"],student_data["Medu"], color = "black", gridsize = 25)
+
+plt.tick_params(labelsize = 15)
+
+_ = plt.title("Grades Vs Mother's Education", fontsize = 15)
+
+_ = plt.xlabel("Student Grades", fontsize = 15)
+_ = plt.ylabel("Mother's Education", fontsize = 15)
+
+ax = fig.add_subplot(1,2,2)
+_ = plt.hexbin(student_data["G3"],student_data["Medu"], color = "black", gridsize = 25)
+
+plt.tick_params(labelsize = 15)
+
+_ = plt.title("Grades Vs Father's Education", fontsize = 15)
+
+_ = plt.xlabel("Student Grades", fontsize = 15)
+_ = plt.ylabel("Father's Education", fontsize = 15)
+
+plt.tight_layout()
+```
+
+
+```python
+
+```
+
+
+```python
+
+```
+
+
+```python
+
+```
+
+
+```python
+
+```
+
+
+```python
+
+```
+
+
+```python
+
+```
+
+
+```python
+
+```
+
+
+```python
+
+```
+
+
+```python
+
+```
+
+
+```python
+
+```
+
+
+```python
+
+```
+
+---
 ![Drexel logo](images/Drexel-engineering-blue-black.png "Drexel Engineering")
