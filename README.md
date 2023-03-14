@@ -122,4 +122,5 @@ _This project is intended to provide some open-ended experience with exploring d
 >   - this could be public record for Public Service Announcements.
 >   - Could also be used to help parents understand the effects of underage drrinking and how it is applied to academic progress.
 ---
+
 ![Drexel logo](images/Drexel-engineering-blue-black.png "Drexel Engineering")
