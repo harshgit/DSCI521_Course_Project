@@ -125,7 +125,10 @@ _This project is intended to provide some open-ended experience with exploring d
 
 ## Part A: Exploratory Data Analysis
 
-> In this section, we will be doing EDA on the data set chosen for our project (https://www.kaggle.com/datasets/uciml/student-alcohol-consumption)
+> In this section, we will be doing EDA on the data set chosen for our project (https://www.kaggle.com/datasets/uciml/student-alcohol-consumption).
+>
+> ![kaggle logo](images/kaggle-logo-transparent-300.png "Kaggle")
+>
 > This data set includes student data (personal, family etc) and the corresponding grade that they received in Math and Portuguese. Our Goal in this section is to determine factors that contribute to a good grade and find correlation of various factors with student grades.
 
 
