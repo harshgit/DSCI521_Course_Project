@@ -14,9 +14,30 @@ _This project is intended to provide some open-ended experience with exploring d
 - Trevor Pawlewicz tmp365@drexel.edu
 ---
 
-### Our Topic:
+### Our Topic: _School Grade Analysis_
 >
-> #### We will explore the area of the activities of a students of a secondary school and what attributes contribute or detract from getting good grades. Concentrating on analyzing the alcohol correlation.
+> ### We will explore the area of the activities of a students of a secondary school and what attributes contribute or detract from getting good grades. Concentrating on analyzing the alcohol correlation.
+>
+> _Attributes in our datasets are taken from a Math course and Portuguese language course in the country of Portugal._
+>
+> #### We will be asking the questions in our data analysis exporation:
+> - Are there any what contributing factors to a good grade?
+> - Are there any what contributing factors to a low grade?
+> - Does alcholhol play a part in either?
+> - Are any other factors found to determine a higher/lower grade?
+>
+> #### Analytic tools and data-medium we will be working with:
+> - CSV
+>
+> #### During our Exploratory Data Analysis journey we will also try to address the following points:
+> - who might be interested in our analysis and why
+>
+> #### We will also give insight into the following journey during our analysis:
+> - Context of Data found/used
+> - Data preprocessing if needed
+> - Our Exploratory Data Analysis
+> - Our Results
+> - Conclusion on our analysis
 ---
 
 ![Drexel logo](images/Drexel-engineering-blue-black.png "Drexel Engineering")
