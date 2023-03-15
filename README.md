@@ -142,15 +142,82 @@ def load_data(path_to_salaries_csv):
     df = pd.read_csv(path_to_salaries_csv, sep = ",", header =0)
 
     return df
-  ```
 
-__A1 (Data Summary):__. Let us look at some high level information abut the data. Data information, Total rows, Total number of Girls and Boys etc.
+# Load the data using our function
+student_data = load_data('./data/student-mat.csv')
+
+# Output the first 10 rows
+print(student_data.head())
+```
+_output:_
+
+|school | sex | age | address | famsize | Pstatus | Medu | Fedu | Mjob | Fjob |
+|:-----:|:---:|:---:|:-------:|:-------:|:-------:|:----:|:----:|:----:|:----:|  
+|0   |  GP  | F  | 18   |    U  |   GT3   |    A  |   4   |  4 | at_home  | teacher | ... |  
+|1   |  GP  | F  | 17   |    U  |   GT3   |    T  |   1   |  1 | at_home  |   other | ... |  
+|2   |  GP  | F  | 15   |    U  |   LE3   |    T  |   1   |  1 | at_home  |   other | ... |  
+|3   |  GP  | F  | 15   |    U  |   GT3   |    T  |   4   |  2 |  health  |services | ... |  
+|4   |  GP  | F  | 16   |    U  |   GT3   |    T  |   3   |  3 |   other  |   other | ... |  
+
+|famrel | freetime | goout | Dalc | Walc | health | absences | G1 | G2 | G3 |
+|:-----:|:--------:|:-----:|:----:|:----:|:------:|:--------:|:--:|:--:|:--:|   
+|0    |  4     |   3    |  4  |   1   |  1  |    3   |     6 |  5  | 6 |  6  |
+|1    |  5     |   3    |  3  |   1   |  1  |    3   |     4 |  5  | 5 |  6  |
+|2    |  4     |   3    |  2  |   2   |  3  |    3   |    10 |  7 |  8 | 10  |
+|3    |  3     |   2    |  2  |   1   |  1  |    5   |     2 | 15 | 14 | 15  |
+|4    |  4     |   3    |  2  |   1   |  2  |    5   |     4 |  6 | 10 | 10|
+
+##### __A1 (Data Summary)__. Let us look at some high level information abut the data. Data information, Total rows, Total number of Girls and Boys etc.
 
 ```python
 print(student_data.info())
 print(student_data["sex"].value_counts())
 print("Total Counts: ", student_data["G3"].count())
 ```
+_output:_
+```
+RangeIndex: 395 entries, 0 to 394
+Data columns (total 33 columns):
+ #   Column      Non-Null Count  Dtype
+---  ------      --------------  -----
+ 0   school      395 non-null    object
+ 1   sex         395 non-null    object
+ 2   age         395 non-null    int64
+ 3   address     395 non-null    object
+ 4   famsize     395 non-null    object
+ 5   Pstatus     395 non-null    object
+ 6   Medu        395 non-null    int64
+ 7   Fedu        395 non-null    int64
+ 8   Mjob        395 non-null    object
+ 9   Fjob        395 non-null    object
+ 10  reason      395 non-null    object
+ 11  guardian    395 non-null    object
+ 12  traveltime  395 non-null    int64
+ 13  studytime   395 non-null    int64
+ 14  failures    395 non-null    int64
+ 15  schoolsup   395 non-null    object
+ 16  famsup      395 non-null    object
+ 17  paid        395 non-null    object
+ 18  activities  395 non-null    object
+ 19  nursery     395 non-null    object
+...
+F    208
+M    187
+Name: sex, dtype: int64
+Total Counts:  395
+count          395.000000
+mean            10.415190
+std              4.581443
+min              0.000000
+25%              8.000000
+50%             11.000000
+75%             14.000000
+max             20.000000
+
+Name: G3, dtype: float64
+```
+
+---
 
 __A2__. We will now try to visualize the Total grades of students using a histogram so we can find the variation and centrality of grades. We can also get basaic statistics about the final grades.
 
@@ -169,6 +236,23 @@ _ = plt.ylabel("Total Students", fontsize = 15)
 
 print("Grades Meta-data", student_data["G3"].describe())
 ```
+_output:_
+```
+Grades Meta-data count    395.000000
+mean                       10.415190
+std                         4.581443
+min                         0.000000
+25%                         8.000000
+50%                        11.000000
+75%                        14.000000
+max                        20.000000
+
+Name: G3, dtype: float64
+```
+
+![Student grades](images/02-studentGrades.png "Student grades")
+
+---
 
 __A3__. Next we can try to analyze if this same trend is observed with Girls and Boys seperately. For this we will filter the student_data data set based on sex column and plot this curve separately
 
@@ -189,7 +273,11 @@ _ = plt.hist(boys_data["G3"])
 _ = plt.title("Boys Grades Distribution", fontsize = 15)
 ```
 
-__A3 (Summary):__ From the above comparison, it seems thata there are not big differences in the variations of grades in the case of boys and girls. So we will turn our attention to other parameters.
+![BoyGirl grades](images/03-boys-girls-grades.png "Boy Girl grades")
+
+##### __A3 (Summary).__ From the above comparison, it seems that there are not big differences in the variations of grades in the case of boys and girls. So we will turn our attention to other parameters.
+
+---
 
 __A4__. We will now try to find relationship between Father and Mother's education to the final grade, G3 score. According to the documentation of the data we have the columns `Medu` and `Fedu` that correspond to Mother's and Father's education levels:
 
@@ -226,6 +314,8 @@ _ = plt.ylabel("Father's Education", fontsize = 15)
 plt.tight_layout()
 ```
 
+![Grades Education](images/04-grades-vs-education.png "Grades Education")
+
 __A4.1__ It does seem like there is a positive correlation between the Mother's and Father's education with the students final grade. We can use a correlation paramter to confirm this hypothesis. In this section we will calculaate the spearman correlation between the Father's and Mother's education to verify this.
 
 ```python
@@ -234,21 +324,114 @@ import scipy.stats
 print("Correlation of Grades with Mother's education", round(scipy.stats.spearmanr(student_data["Medu"], student_data["G3"])[0],2))
 print("Correlation of Grades with Father's education", round(scipy.stats.spearmanr(student_data["Fedu"], student_data["G3"])[0],2))
 ```
-__A4 (Summary):__. It seems there is a better correlation with Mother's educetionwith student's gradaes and as seen in the visualization, the students that have the highest grades have their mother completed Higher education.
+##### __A4 (Summary):__. It seems there is a better correlation with Mother's educetion with student's grades and as seen in the visualization, the students that have the highest grades have their mother completed Higher education.
 
-__A5__. Now let us compute the spearman correlation of all other numeric data with grades and find out if we have a feature that is highly correlataed with the student's Grades
+---
+
+__A5__. Now let us compute the spearman correlation of all other numeric data with grades and find out if we have a feature that is highly correlated with the student's Grades
 
 ```python
 list_features = [ column for column in list(student_data.columns) if student_data[column].dtype == "int64" ]
 print(list_features)
 ```
-Let's apply the functions you have created to (1) total up the male and female population counts and (2) identify the states with the minimum and maximum totals and their total amounts.
 
-
-```python
-
+_output:_
+```
+['age', 'Medu', 'Fedu', 'traveltime', 'studytime', 'failures', 'famrel', 'freetime', 'goout', 'Dalc', 'Walc', 'health', 'absences', 'G1', 'G2', 'G3']
 ```
 
+We will get the final correlation_list sorted on absolute value of correlation:
+
+```python
+# A5:Compute spearman correlation for all the fields:
+
+correlation_list = [(feature,round(scipy.stats.spearmanr(student_data[feature], student_data["G3"])[0],2)) for feature in list_features]
+sorted_correlation_list =  sorted(correlation_list, reverse=True, key= lambda x: abs(x[1]))
+print(sorted_correlation_list)
+```
+
+_output:_
+```
+[('G3', 1.0), ('G2', 0.96), ('G1', 0.88), ('failures', -0.36), ('Medu', 0.23), ('age', -0.17), ('Fedu', 0.17), ('goout', -0.17), ('traveltime', -0.12), ('Dalc', -0.12), ('studytime', 0.11), ('Walc', -0.1), ('famrel', 0.05), ('health', -0.05), ('absences', 0.02), ('freetime', -0.0)]
+```
+
+##### __A5 (Summary)__. According to the output above, it seems like past failures have a negative correlation with grades. (We can ignore G1 and G2 scores as those are just factor into the calculation of the final grades.
 
 ---
+
+__A6__. Now we will visualize the relationship between the final grades and past failures.
+
+```python
+fig = plt.figure(figsize=(6,6))
+
+_ = plt.scatter(student_data["G3"], student_data["failures"], color="black", s=5, alpha=0.5)               
+plt.tick_params(labelsize = 15)
+_ = plt.title("Grades vs Past Failures", fontsize=15)
+_ = plt.xlabel("Student Grades", fontsize = 15)
+_ = plt.ylabel("Past Failures", fontsize=15)
+```
+
+![Grades Failures](images/06-grades-and-failures.png "Grades Failures")
+
+##### __A6 (Summary)__. From the visualization above, we can see that the students with higher grades are mostly the one's that haven't failed in the past.
+
+---
+
+__A7.1.__ we will now explore the correlation with some of the non integer and categorical feilds such as whether the student is in a romantic relationship or if the student is interested in higher education and so on. For this we will have to do some preprocessing to turn them into integer values. We will use a a value of 0 for No and 1 for Yes.
+
+```python
+def correlation_category(column,description):
+    student_data[column+"_label"] = student_data.apply(lambda x: 1 if x[column]=="yes" else 0, axis=1)
+    print("Correlation of Grades with "+description, round(scipy.stats.spearmanr(student_data[column+"_label"], student_data["G3"])[0],2))
+
+correlation_category("romantic","Romantic")
+correlation_category("higher","Interest in Higher Education")
+correlation_category("internet","Internet Availability")
+correlation_category("activities","Extra Curricular activities")
+correlation_category("paid","Paid Course")
+correlation_category("famsup","Family Support")
+correlation_category("schoolsup","School Support")
+```
+_output:_
+```
+Correlation of Grades with Romantic -0.09
+Correlation of Grades with Interest in Higher Education 0.17
+Correlation of Grades with Internet Availability 0.11
+Correlation of Grades with Extra Curricular activities 0.03
+Correlation of Grades with Paid Course 0.06
+Correlation of Grades with Family Support -0.05
+Correlation of Grades with School Support -0.15
+```
+
+__A7.2__. For some of the fields, the data is not available in yes and no, but they are still binary and so we can pre process the data accordingly and view the correlation data.
+
+```python
+student_data["pstatus_label"] = student_data.apply(lambda x: 1 if x["Pstatus"]=="T" else 0, axis=1)
+print("Correlation of Grades with Parent CohAbitation Status", round(scipy.stats.spearmanr(student_data["pstatus_label"], student_data["G3"])[0],2))
+
+student_data["famsize_label"] = student_data.apply(lambda x: 1 if x["famsize"]=="LE3" else 0, axis=1)
+print("Correlation of Grades with Family Size", round(scipy.stats.spearmanr(student_data["famsize_label"], student_data["G3"])[0],2))
+
+student_data["address_label"] = student_data.apply(lambda x: 1 if x["address"]=="U" else 0, axis=1)
+print("Correlation of Grades with Address Type", round(scipy.stats.spearmanr(student_data["address_label"], student_data["G3"])[0],2))
+```
+_output:_
+```
+Correlation of Grades with Parent CohAbitation Status -0.04
+Correlation of Grades with Family Size 0.07
+Correlation of Grades with Address Type 0.12
+```
+
+##### __A7 (Summary)__. Considering all the categorical feilds, it seems that "Interset in Higher Education" has the best correlation with Student Grades
+
+#### __PART A (Summary)__. Based on the result of EDA of trying to find out what correlates to a student's grade, we can list the following top 4 features that have an absolute correlation value of 0.17 or more
+1. Past Failures (Negative Correlation)
+2. Mother's Education (Positive)
+3. Father's Education (Positive)
+4. Interest in Higher Education (Positive)
+
+#### _Based upon these findings, we will proceed in PART B to train a model and Predict Student's grades..._
+
+---
+
 ![Drexel logo](images/Drexel-engineering-blue-black.png "Drexel Engineering")
