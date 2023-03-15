@@ -149,7 +149,7 @@ student_data = load_data('./data/student-mat.csv')
 # Output the first 10 rows
 print(student_data.head())
 ```
-_output:_
+_A1 output:_
 
 |school | sex | age | address | famsize | Pstatus | Medu | Fedu | Mjob | Fjob |
 |:-----:|:---:|:---:|:-------:|:-------:|:-------:|:----:|:----:|:----:|:----:|  
@@ -236,7 +236,7 @@ _ = plt.ylabel("Total Students", fontsize = 15)
 
 print("Grades Meta-data", student_data["G3"].describe())
 ```
-_output:_
+_A2 output:_
 ```
 Grades Meta-data count    395.000000
 mean                       10.415190
@@ -335,7 +335,7 @@ list_features = [ column for column in list(student_data.columns) if student_dat
 print(list_features)
 ```
 
-_output:_
+_A5 output:_
 ```
 ['age', 'Medu', 'Fedu', 'traveltime', 'studytime', 'failures', 'famrel', 'freetime', 'goout', 'Dalc', 'Walc', 'health', 'absences', 'G1', 'G2', 'G3']
 ```
@@ -350,7 +350,7 @@ sorted_correlation_list =  sorted(correlation_list, reverse=True, key= lambda x:
 print(sorted_correlation_list)
 ```
 
-_output:_
+_A5 output:_
 ```
 [('G3', 1.0), ('G2', 0.96), ('G1', 0.88), ('failures', -0.36), ('Medu', 0.23), ('age', -0.17), ('Fedu', 0.17), ('goout', -0.17), ('traveltime', -0.12), ('Dalc', -0.12), ('studytime', 0.11), ('Walc', -0.1), ('famrel', 0.05), ('health', -0.05), ('absences', 0.02), ('freetime', -0.0)]
 ```
@@ -392,7 +392,7 @@ correlation_category("paid","Paid Course")
 correlation_category("famsup","Family Support")
 correlation_category("schoolsup","School Support")
 ```
-_output:_
+_A7.1 output:_
 ```
 Correlation of Grades with Romantic -0.09
 Correlation of Grades with Interest in Higher Education 0.17
@@ -415,7 +415,7 @@ print("Correlation of Grades with Family Size", round(scipy.stats.spearmanr(stud
 student_data["address_label"] = student_data.apply(lambda x: 1 if x["address"]=="U" else 0, axis=1)
 print("Correlation of Grades with Address Type", round(scipy.stats.spearmanr(student_data["address_label"], student_data["G3"])[0],2))
 ```
-_output:_
+_A7.2 output:_
 ```
 Correlation of Grades with Parent CohAbitation Status -0.04
 Correlation of Grades with Family Size 0.07
