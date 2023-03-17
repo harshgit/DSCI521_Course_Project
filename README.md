@@ -668,9 +668,7 @@ _ = plt.title("Actual Vs Predicted Grades")
 
 ![prediction actual](images/B2.3-prediction-actual-grades.png "Prediction and Actual Grades")
 
-
 #### __PART B (Summary)__. It seems our prediction model is able to predict the lower grades better than higher graders and this itself is useful information for Parents and Teachers so that they can take corrective actions based on the set of input parameters.
-
 
 ---
 
