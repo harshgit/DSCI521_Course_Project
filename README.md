@@ -429,8 +429,248 @@ Correlation of Grades with Address Type 0.12
 2. Mother's Education (Positive)
 3. Father's Education (Positive)
 4. Interest in Higher Education (Positive)
+5. Age (Negative)
+6. Going Out (Negative)
 
 #### _Based upon these findings, we will proceed in PART B to train a model and Predict Student's grades..._
+
+---
+## Part B: Student Grade Prediction
+
+In this section, we will attempt to train a prediction model to predict student grades in Math given information about students. We will use the information of our EDA from Part A and only focus on the features of interest mentioned above.
+
+__B1__. Let us start by using all the above features that contribute to a student's grade and Build  ML Model using it. We will use Linear Regression from `sklearn`.
+
+```python
+# Linear Regression
+
+x = student_data[["failures","Medu","Fedu","higher_label","age","goout"]].values
+y = student_data["G3"]
+
+print(x.shape)
+```
+
+_B1 output:_
+```
+(395, 6)
+```
+
+```python
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+import numpy as np
+
+lm = LinearRegression()
+
+# create training and test sets
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=42)
+
+# Train the model using the training sets
+lm.fit(x_train, y_train)
+
+# predict on a separate testing set
+predictions = lm.predict(x_test)
+
+# compute the SSE
+SSE = sum((np.array(y_test) - predictions)**2)
+
+# compute the RMSE
+RMSE = np.sqrt(SSE/len(predictions))
+
+print(RMSE)
+```
+
+_output:_
+```
+4.302867250886894
+```
+
+```python
+print(lm.score(x_test,y_test))
+```
+
+_output:_
+```
+0.16007498821516808
+```
+
+---
+
+__B2__. The accuracy is not promising (Only 16%).
+
+We can plot the predicted and actual values to see where our model is making most errors.
+
+```python
+from matplotlib import pyplot as plt
+linefig = plt.figure(figsize=(18,6))
+
+x_axis = list(range(len(predictions)))
+
+_  = plt.plot(x_axis, y_test, color="blue", label='Actual')
+_  = plt.plot(x_axis, predictions, color="red", label="Predicted")
+
+plt.tick_params(labelsize=15)
+
+_ = plt.xlabel("Students",fontsize=15)
+_ = plt.ylabel("Grades", fontsize=15)
+plt.legend()
+_ = plt.title("Actual Vs Predicted Grades")
+```
+
+![prediction actual](images/B2.1-prediction-actual-grades.png "Prediction and Actual Grades")
+
+
+##### __B2 (Summary)__. We can see that the trend is similar but the predictions are not as close to actual. It seems that the model is able to predict the low graders better than high graders.
+
+---
+
+__B3__. Let us try with fewer features and only focus on the top 2 (Past Failures and Mother's Education)
+
+
+```python
+# Linear Regression
+
+x = student_data[["failures","Medu"]].values
+y = student_data["G3"]
+
+print(x.shape)
+```
+
+_output:_
+```
+(395, 2)
+```
+
+```python
+lm = LinearRegression()
+
+# create training and test sets
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=42)
+
+# Train the model using the training sets
+lm.fit(x_train, y_train)
+
+# predict on a separate testing set
+predictions = lm.predict(x_test)
+
+# compute the SSE
+SSE = sum((np.array(y_test) - predictions)**2)
+
+# compute the RMSE
+RMSE = np.sqrt(SSE/len(predictions))
+
+print(RMSE)
+```
+
+_output:_
+```
+4.286294431408094
+```
+
+```python
+print(lm.score(x_test,y_test))
+```
+
+_output:_
+```
+0.16653259797234732
+```
+
+```python
+linefig = plt.figure(figsize=(18,6))
+
+x_axis = list(range(len(predictions)))
+
+_  = plt.plot(x_axis, y_test, color="blue", label='Actual')
+_  = plt.plot(x_axis, predictions, color="red", label="Predicted")
+
+plt.tick_params(labelsize=15)
+
+_ = plt.xlabel("Students",fontsize=15)
+_ = plt.ylabel("Grades", fontsize=15)
+plt.legend()
+_ = plt.title("Actual Vs Predicted Grades")
+```
+
+![prediction actual](images/B2.2-prediction-actual-grades.png "Prediction and Actual Grades")
+
+
+##### __B3 (Summary)__ Not much Improvement. We can see that the trend is similar but the predictions are not as close to actual. It seems that the model is able to predict the low graders better than high graders, The Accuracy increase a bit to 16.6%
+
+---
+
+##### Summarizing:
+
+```python
+# Linear Regression
+
+x = student_data[["failures"]].values
+y = student_data["G3"]
+
+print(x.shape)
+```
+
+_output:_
+```
+(395, 1)
+```
+
+```python
+lm = LinearRegression()
+
+# create training and test sets
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=42)
+
+# Train the model using the training sets
+lm.fit(x_train, y_train)
+
+# predict on a separate testing set
+predictions = lm.predict(x_test)
+
+# compute the SSE
+SSE = sum((np.array(y_test) - predictions)**2)
+
+# compute the RMSE
+RMSE = np.sqrt(SSE/len(predictions))
+
+print(RMSE)
+```
+
+_output:_
+```
+4.3609938531325545
+```
+
+```python
+print(lm.score(x_test,y_test))
+```
+
+_output:_
+```
+0.13722894272732822
+```
+
+```Python
+linefig = plt.figure(figsize=(18,6))
+
+x_axis = list(range(len(predictions)))
+
+_  = plt.plot(x_axis, y_test, color="blue", label='Actual')
+_  = plt.plot(x_axis, predictions, color="red", label="Predicted")
+
+plt.tick_params(labelsize=15)
+
+_ = plt.xlabel("Students",fontsize=15)
+_ = plt.ylabel("Grades", fontsize=15)
+plt.legend()
+_ = plt.title("Actual Vs Predicted Grades")
+```
+
+![prediction actual](images/B2.3-prediction-actual-grades.png "Prediction and Actual Grades")
+
+
+#### __PART B (Summary)__. It seems our prediction model is able to predict the lower grades better than higher graders and this itself is useful information for Parents and Teachers so that they can take corrective actions based on the set of input parameters.
+
 
 ---
 
