@@ -455,6 +455,58 @@ _B1 output:_
 (395, 6)
 ```
 
+next, _Algorithm Comparison:_
+
+```Python
+from sklearn import linear_model
+from sklearn.neighbors import KNeighborsRegressor
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.svm import SVR
+from sklearn.metrics import accuracy_score
+from sklearn import model_selection
+import numpy as np
+
+models = {}
+models['LR'] = LinearRegression()
+models['RIDGE'] = Ridge()
+models['LASSO'] = Lasso()
+models['EN'] = ElasticNet()
+models['KN'] = KNeighborsRegressor()
+models['DT'] = DecisionTreeRegressor()
+models['SVR'] = SVR()
+
+results = []
+for name, model in models.items():
+    cv_results = model_selection.cross_val_score(model, x, y,  cv=5, scoring="r2")
+    results.append(cv_results)
+    print(f"{name}: {cv_results.mean()} ({cv_results.std()})")
+
+# Compare Algorithms
+fig = plt.figure()
+fig.suptitle('Algorithm Comparison')
+ax = fig.add_subplot(111)
+plt.boxplot(results)
+ax.set_xticklabels(models.keys())
+plt.show()
+```
+
+_output:_
+```
+LR: 0.08141497103453654 (0.10776804673856544)
+RIDGE: 0.08264293789836405 (0.10728300462241515)
+LASSO: -0.027593780309592274 (0.07784086844338022)
+EN: 0.01190158645605619 (0.06847974688226648)
+KN: -0.13343831204969386 (0.12784174434875145)
+DT: -0.8918701190832186 (0.7971977887165463)
+SVR: 0.042555155125241884 (0.03607808739474081)
+```
+
+![Algorithm Comparison](images/B2.1-algorithtm-compare.png "Algorithm Comparison")
+
+
+next, _Linear Regression:_
+
 ```python
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
