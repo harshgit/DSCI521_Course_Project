@@ -16,7 +16,7 @@ _This project is intended to provide some open-ended experience with exploring d
 
 ## Our Topic: _School Grade Analysis_
 >
-> ### We will explore the area of the activities of a students of a secondary school and what attributes contribute or detract from getting good grades. Concentrating on analyzing the alcohol correlation.
+> ### We will explore the area of the activities of a students of a secondary school and what attributes contribute or detract from getting good grades.
 >
 > _Attributes in our datasets are taken from a Math course and Portuguese language course in the country of Portugal._
 >
